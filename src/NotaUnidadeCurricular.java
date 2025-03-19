@@ -9,6 +9,9 @@ public class NotaUnidadeCurricular {
         float[] notasFloat = new float[numeroNotas];
 
 
+        char[][] infoCurso = {{'L','I','C','E','N','C','I','A','T','U','R','A',' ','I','N','F','O','R','M','A','T','I','C','A'},
+            {'L','I','N','G','U','A','G','E','N','S',' ','D','E',' ','P','R','O','G','R','A','M','A','C','A','O'}};
+
         for (int i = 0; i < numeroNotas; i++){
             System.out.println("\nInsira a nota " + (i + 1) + " : ");
             notasFloat[i] = sc.nextFloat();
@@ -18,11 +21,11 @@ public class NotaUnidadeCurricular {
         int[] notasInteiro = deFloatParaInt(notasFloat);
         imprimirArray(notasInteiro);
 
-        mediaDoCurso(notasInteiro);
+        mediaDoCurso(infoCurso, notasInteiro);
         System.out.println("\n=======================\n");
-        maximoNota(notasInteiro);
+        maximoNota(infoCurso, notasInteiro);
         System.out.println("\n=======================\n");
-        minimoNota(notasInteiro);
+        minimoNota(infoCurso, notasInteiro);
 
         /*
         int[] m1 = {0, 0, 0, 0};
@@ -50,7 +53,8 @@ public class NotaUnidadeCurricular {
         */
 
     }
-    public static void mediaDoCurso(int[] notas){
+    public static void mediaDoCurso(char[][] info, int[] notas){
+        imprimirCurso(info);
         int media = 0;
         for (int nota : notas) {
             media += nota;
@@ -58,7 +62,8 @@ public class NotaUnidadeCurricular {
         media = media / notas.length;
         System.out.println("Media das notas: " + media);
     }
-    public static void maximoNota(int[] notas){
+    public static void maximoNota(char[][] info, int[] notas){
+        imprimirCurso(info);
         int max = notas[0];
         for (int i = 1; i < notas.length; i++) {
             if (notas[i] > max){
@@ -67,7 +72,8 @@ public class NotaUnidadeCurricular {
         }
         System.out.println("Nota máxima: " + max);
     }
-    public static void minimoNota(int[] notas){
+    public static void minimoNota(char[][] info, int[] notas){
+        imprimirCurso(info);
         int min = notas[0];
         for (int i = 1; i < notas.length; i++) {
             if (notas[i] < min){
@@ -83,6 +89,16 @@ public class NotaUnidadeCurricular {
             notasInteiro[i] = Math.round(notas[i]);
         }
         return notasInteiro;
+    }
+
+    public static void imprimirCurso(char [][] info){
+        for (int i = 0; i < info.length; i++){
+            for (int j = 0; j < info[i].length; j++){
+                System.out.print(info[i][j] + " ");
+            }
+            System.out.println();
+        }
+
     }
 
     public static void imprimirArray(int[] notas){
