@@ -20,7 +20,7 @@ public class TresNumeros {
     }
 
     private static void condicaoEntrada(int n, int m, int s) throws CondicaoEntradaException{
-        if (n < m && s < m - n){
+        if ((n != 0 && m != 0 &&s != 0) && (n < m && s < m - n)){
             // a) Contagem de n a m (inclusive)
             System.out.println("\na) Contagem de n a m (inclusive)");
             for (int i = n; i <= m; i++){
